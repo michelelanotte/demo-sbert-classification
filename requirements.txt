@@ -1,0 +1,1 @@
+pip install nltk torch pandas transformers tqdm
