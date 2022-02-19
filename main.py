@@ -38,8 +38,11 @@ def train(model, train_data, val_data, learning_rate, epochs):
             input_id = train_input['input_ids'].squeeze(1).to(device)
 
             output = model(input_id, mask)
+            """print(output)
+            print(train_label)
+            print("________")"""
             
-            batch_loss = criterion(output, train_label)
+            batch_loss = criterion(output, train_label.long())
             total_loss_train += batch_loss.item()
             
             acc = (output.argmax(dim=1) == train_label).sum().item()
@@ -60,7 +63,7 @@ def train(model, train_data, val_data, learning_rate, epochs):
 
                 output = model(input_id, mask)
 
-                batch_loss = criterion(output, val_label)
+                batch_loss = criterion(output, val_label.long())
                 total_loss_val += batch_loss.item()
                 
                 acc = (output.argmax(dim=1) == val_label).sum().item()
@@ -95,7 +98,7 @@ np.random.seed(112)
 df_train, df_val = np.split(df.sample(frac=1, random_state=42), 
                                      [int(.8*len(df))])
 
-EPOCHS = 8
+EPOCHS = 10
 model = BertClassifier()
 LR = 1e-6
 train(model, df_train, df_val, LR, EPOCHS)

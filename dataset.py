@@ -2,7 +2,7 @@ import torch
 import numpy as np
 from transformers import BertTokenizer
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
 
 class Dataset(torch.utils.data.Dataset):
 
