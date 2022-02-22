@@ -91,7 +91,7 @@ def train(model, train_data, val_data, learning_rate, epochs):
 
 """----------------------------------MAIN-------------------------------------------"""
 datapath = 'training_set.csv'
-df = pd.read_csv(datapath)
+df = pd.read_csv(datapath, header=0)
 df['text'] = preprocessing(df['text'])
 
 np.random.seed(112)
