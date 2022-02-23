@@ -6,6 +6,7 @@ from bertClassifier import *
 import numpy as np
 import math
 import pandas as pd
+import os
 from utils import preprocessing
 
 def train(model, train_data, val_data, learning_rate, epochs):
@@ -86,8 +87,7 @@ def train(model, train_data, val_data, learning_rate, epochs):
             if counter == 3:
                 break
         
- 
-    torch.save(model, 'model/sbert.pth')
+    torch.save(model, "sbert.pth")
 
 """----------------------------------MAIN-------------------------------------------"""
 datapath = 'training_set.csv'
