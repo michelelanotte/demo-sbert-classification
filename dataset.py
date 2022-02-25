@@ -1,8 +1,9 @@
 import torch
 import numpy as np
-from transformers import BertTokenizer
+from transformers import BertTokenizer, AutoTokenizer
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+#tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+tokenizer = AutoTokenizer.from_pretrained("vinai/bertweet-base", use_fast=False)
 
 class Dataset(torch.utils.data.Dataset):
 

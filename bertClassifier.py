@@ -1,5 +1,5 @@
 from torch import nn
-from transformers import BertModel
+from transformers import BertModel, AutoModel
 
 class BertClassifier(nn.Module):
 
@@ -7,7 +7,8 @@ class BertClassifier(nn.Module):
 
         super(BertClassifier, self).__init__()
 
-        self.bert = BertModel.from_pretrained('bert-base-cased')
+        #self.bert = BertModel.from_pretrained('bert-base-cased')
+        self.bert = AutoModel.from_pretrained("vinai/bertweet-base")
         self.linear = nn.Linear(768, 2)
         self.relu = nn.ReLU()
 
